@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio - Anant Singh</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      background-color: black;
+    }
+
+    .hero {
+      padding: 3rem 2rem;
+      background: linear-gradient(to right, #0d5791, #159b59);
+    }
+
+    .hero-content {
+      max-width: 600px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+    }
+
+    .about, .skills {
+      padding: 2rem;
+      background-color: #0a0a0a;
+      background-image:
+        linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05) 76%, transparent 77%, transparent);
+      background-size: 40px 40px;
+    }
+
+    .rainbow-bar {
+      height: 4px;
+      background: linear-gradient(to right, rgb(255, 240, 34), orange, rgb(221, 36, 181), green, cyan, blue, violet);
+    }
+
+    .skills-box {
+      border: 2px solid white;
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 16px rgba(0, 255, 255, 0.4);
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .card {
+      background-color: #000;
+      border: 2px solid white;
+      border-radius: 16px;
+      padding: 1rem;
+      text-align: center;
+      flex: 1 1 100px;
+      max-width: 120px;
+      box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.9);
+    }
+
+    .card img {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 0.5rem;
+    }
+
+    .card span {
+      display: block;
+      color: white;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .github-footer {
+      padding: 2rem;
+      text-align: center;
+      background-color: #161622;
+    }
+
+    .github-footer img {
+      width: 48px;
+      filter: invert(1);
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Hi, I'm Anant</h1>
+      <p>A passionate learner and developer. I love contributing in open source projects and exploring cool technologies.</p>
+    </div>
+  </section>
+
+  <div class="rainbow-bar"></div>
+
+  <section class="about">
+    <h2>More about me</h2>
+    <p>
+      I’m a passionate coder from India, currently navigating through high school. My journey in tech began early, and over time, it has grown into a strong love for building meaningful things — whether it's crafting full-stack applications, contributing to open-source communities, or experimenting with new tools and languages. I spend a good portion of my time writing code, but I also enjoy balancing it with studying and gaming sessions to refresh my mind.<br><br>
+      Outside the screen, I’m an avid basketball player — the court helps me stay grounded and energized. I believe in sharing knowledge and often contribute to open-source projects, not just to build cool stuff, but also to help others in the community. Every small contribution matters, and I strive to make an impact while learning along the way.
+    </p>
+  </section>
+
+  <div class="rainbow-bar"></div>
+
+  <section class="skills">
+    <div class="skills-box">
+      <h2>Languages I Know</h2>
+      <div class="grid" id="languages"></div>
+    </div>
+
+    <div class="skills-box">
+      <h2>Tools I Use</h2>
+      <div class="grid" id="tools"></div>
+    </div>
+  </section>
+
+  <div class="rainbow-bar"></div>
+
+  <footer class="github-footer">
+    <a href="https://github.com/annanttomar" target="_blank">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" />
+    </a>
+  </footer>
+
+  <div class="rainbow-bar"></div>
+
+  <script>
+    const languages = [
+  { name: 'Python', src: 'assets/python.svg' },
+  { name: 'JavaScript', src: 'assets/javascript.svg' },
+  { name: 'TypeScript', src: 'assets/typescript.svg' },
+  { name: 'Rust', src: 'assets/rust.svg' }
+];
+
+const tools = [
+  { name: 'VS Code', src: 'assets/vscode.svg' },
+  { name: 'Git', src: 'assets/git.svg' }
+];
+
+
+    const createCard = (item) => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `<img src="${item.src}" alt="${item.name}" /><span>${item.name}</span>`;
+      return card;
+    };
+
+    const languagesContainer = document.getElementById('languages');
+    languages.forEach(lang => {
+      languagesContainer.appendChild(createCard(lang));
+    });
+
+    const toolsContainer = document.getElementById('tools');
+    tools.forEach(tool => {
+      toolsContainer.appendChild(createCard(tool));
+    });
+  </script>
+</body>
+</html>
