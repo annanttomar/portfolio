@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anant Singh - Software Developer</title>
+    <link rel="icon" href="assets/avatar.png" type="image/png">
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #fff;
+            color: #333;
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .prompt {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .prompt-user {
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .prompt-symbol {
+            font-weight: bold;
+        }
+
+        .prompt nav {
+            margin-top: 10px;
+        }
+        
+        .prompt nav a {
+            margin-left: 1.5rem;
+        }
+
+        .prompt-text-wrapper {
+            cursor: help;
+        }
+
+        .blinking-cursor {
+            display: inline-block;
+            width: 9px;
+            height: 1.1em;
+            background-color: #333;
+            animation: blink-animation 1s steps(2, start) infinite;
+            vertical-align: text-bottom;
+            margin-left: 4px;
+        }
+
+        @keyframes blink-animation {
+            to {
+                visibility: hidden;
+            }
+        }
+
+        .content-section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        
+        h3 {
+            font-size: 1.2rem;
+        }
+
+        .separator {
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-flex {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .subsection-title {
+            margin-top: 2.5rem;
+            margin-bottom: 0;
+            font-size: 1.5rem;
+        }
+
+        .item {
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 2px solid #eee;
+        }
+
+        .item .title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .repo-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .repo-link svg {
+            fill: #555;
+            transition: fill 0.3s ease;
+        }
+
+        .repo-link:hover,
+        .repo-link:hover svg {
+            text-decoration: none;
+            color: #007bff;
+            fill: #007bff;
+        }
+        
+        .many-more {
+            font-style: italic;
+            color: #888;
+            margin-top: 1.5rem;
+        }
+        
+        #contact ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        #contact li {
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            margin-top: 4rem;
+            text-align: center;
+            color: #888;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+            }
+            .prompt {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .prompt nav a {
+                margin-left: 0;
+                margin-right: 1rem;
+            }
+            .about-flex {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="prompt">
+            <div>
+                <span class="prompt-text-wrapper" title="whoami">
+                    <span class="prompt-user">annant.me:</span><span class="prompt-symbol">~#</span>
+                </span>
+                <span class="blinking-cursor"></span>
+            </div>
+            <nav>
+                <a href="#about">./about</a>
+                <a href="#tech-stack">./stack</a>
+                <a href="#projects">./projects</a>
+                <a href="#contact">./contact</a>
+            </nav>
+        </header>
+
+        <main>
+            <section id="about" class="content-section">
+                <h2>About Me</h2>
+                <div class="separator">==========</div>
+                <div class="about-flex">
+                    <img src="assets/avatar.png" alt="Anant Singh" class="profile-pic">
+                    <div>
+                        <p><strong>Hi, I'm Anant Singh.</strong></p>
+                        <p>A passionate developer and a school student focused on building innovative solutions and engaging with vibrant communities.</p>
+                        <p>I have experience with a variety of technologies and enjoy contributing to open source projects and helping people.</p>
+                        <p>When I'm not buried in code or crafting Discord presences, I become a curious wanderer in a digital realm—part time-bender, part bug-squasher, full-time chaos wrangler. I chase glitches like fireflies and turn user requests into reality with a sprinkle of late-night caffeine and way too many tabs open. Whether it's helping someone fix a broken script or making a presence just because someone asked nicely—I thrive in the madness, finding joy in every solved puzzle and every 'it finally works!' moment.</p>
+                    </div>
+                </div>
+
+                <h2 class="subsection-title">My Experience</h2>
+                <div class="separator">===============</div>
+                <div class="item">
+                    <p class="title">2024: Open Source Contributions</p>
+                    <p>Started helping out with the open source community, contributing to projects and learning from the best.</p>
+                </div>
+                <div class="item">
+                    <p class="title">2021: Web Development</p>
+                    <p>Worked on several frontend projects, utilizing modern frameworks to build responsive and scalable web applications.</p>
+                </div>
+                 <div class="item">
+                    <p class="title">2020: Learning and Exploration</p>
+                    <p>Began my journey into software development, focusing on foundational programming concepts and building small personal projects.</p>
+                </div>
+            </section>
+
+            <section id="tech-stack" class="content-section">
+                <h2>Technologies and Stack I Use</h2>
+                <div class="separator">=============================</div>
+                <h3>Languages</h3>
+                <p>HTML, CSS, JS, Python, Rust</p>
+                
+                <h3>Frameworks & Libraries</h3>
+                <p>React, Vue, Tailwind CSS</p>
+
+                <h3>Tools & Platforms</h3>
+                <p>Git, Github, Firebase, VS Code, WebStorm, PyCharm</p>
+            </section>
+
+            <section id="projects" class="content-section">
+                <h2>Projects & Contributions</h2>
+                <div class="separator">==========================</div>
+
+                <h3>My Projects</h3>
+                <div class="item">
+                    <p class="title"><a href="https://www.randomanimequote.ct.ws/" target="_blank" rel="noopener noreferrer">Random Anime Quote Generator</a></p>
+                    <p>It is basically a open-source project which generates random anime quotes, and it does also have an in-built spotify presence where you can run your favorite song tracks.</p>
+                    <a href="https://github.com/annanttomar/Random-Anime-Quote-Generator" class="repo-link" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                        <span>Repo</span>
+                    </a>
+                </div>
+                <div class="item">
+                    <p class="title"><a href="https://nira-bot.tech/" target="_blank" rel="noopener noreferrer">N.I.R.A (a discord bot) Promotional Website</a></p>
+                    <p>This is basically a promotional site made for N.I.R.A, a discord smart companion which has alot of tools and features. This site is purely made in the HTML language with a sleek smart and cool style.</p>
+                    <a href="https://github.com/annanttomar/N.I.R.A-Website" class="repo-link" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                        <span>Repo</span>
+                    </a>
+                </div>
+
+                <p class="many-more">... and many more!</p>
+
+                <h3 class="subsection-title">Open Source</h3>
+                <div class="separator">===============</div>
+                <div class="item">
+                    <p class="title"><a href="https://premid.app/" target="_blank" rel="noopener noreferrer">PreMid</a></p>
+                    <p>CCreated 6+ custom Discord Rich Presences, actively supported the community by fixing bugs, resolving user issues, and contributing to public-requested and collaborative presence projects.</p>
+                </div>
+                <div class="item">
+                    <p class="title"><a href="https://www.youtube.com/channel/UCotAJrrRp5ERMaLXnnVzlwQ" target="_blank" rel="noopener noreferrer">VoidWare</a></p>
+                    <p>Worked as an app tester in this organization, where I identified critical issues, helped resolve user-facing problems, and contributed to key updates that enhanced overall performance.</p>
+                </div>
+                <p class="many-more">... and many more!</p>
+            </section>
+            
+            <section id="contact" class="content-section">
+                <h2>Contact</h2>
+                <div class="separator">=========</div>
+                <ul>
+                    <li><strong>Discord</strong>: <span id="discord-username" title="Click to copy" style="cursor: pointer;">__anant#0000</span><span id="copy-feedback" style="display: none; margin-left: 10px; color: #007bff; font-style: italic;">Copied!</span></li>
+                    <li><strong>GitHub</strong>: <a href="https://github.com/annanttomar" target="_blank" rel="noopener noreferrer">github.com/annanttomar</a></li>
+                    <li><strong>Reddit</strong>: <a href="https://www.reddit.com/user/yourusername/" target="_blank" rel="noopener noreferrer">Cool_Annant</a></li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Anant Singh. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        const discordUsernameEl = document.getElementById('discord-username');
+        const copyFeedbackEl = document.getElementById('copy-feedback');
+
+        if (discordUsernameEl) {
+            discordUsernameEl.addEventListener('click', () => {
+                const username = discordUsernameEl.innerText;
+                navigator.clipboard.writeText(username).then(() => {
+                    copyFeedbackEl.style.display = 'inline';
+                    setTimeout(() => {
+                        copyFeedbackEl.style.display = 'none';
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Could not copy text: ', err);
+                });
+            });
+        }
+    </script>
+</body>
+</html> 
