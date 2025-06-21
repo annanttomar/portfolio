@@ -6,12 +6,37 @@
     <title>Anant Singh - Software Developer</title>
     <link rel="icon" href="assets/avatar.png" type="image/png">
     <style>
+        :root {
+            --bg-color: #fff;
+            --text-color: #333;
+            --primary-color: #007bff;
+            --secondary-text-color: #555;
+            --separator-color: #333;
+            --border-color: #eee;
+            --footer-text-color: #888;
+            --cursor-bg-color: #333;
+            --link-hover-color: #0056b3;
+        }
+
+        body[data-theme="dark"] {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --primary-color: #38b6ff;
+            --secondary-text-color: #bbbbbb;
+            --separator-color: #e0e0e0;
+            --border-color: #333;
+            --footer-text-color: #aaaaaa;
+            --cursor-bg-color: #e0e0e0;
+            --link-hover-color: #6acbff;
+        }
+
         body {
             font-family: 'Courier New', Courier, monospace;
-            background-color: #fff;
-            color: #333;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             line-height: 1.6;
             padding: 2rem;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         .container {
@@ -20,12 +45,13 @@
         }
 
         a {
-            color: #007bff;
+            color: var(--primary-color);
             text-decoration: none;
         }
 
         a:hover {
             text-decoration: underline;
+            color: var(--link-hover-color);
         }
 
         .prompt {
@@ -37,7 +63,7 @@
         }
 
         .prompt-user {
-            color: #007bff;
+            color: var(--primary-color);
             font-weight: bold;
         }
 
@@ -47,6 +73,8 @@
 
         .prompt nav {
             margin-top: 10px;
+            display: flex;
+            align-items: center;
         }
         
         .prompt nav a {
@@ -61,7 +89,7 @@
             display: inline-block;
             width: 9px;
             height: 1.1em;
-            background-color: #333;
+            background-color: var(--cursor-bg-color);
             animation: blink-animation 1s steps(2, start) infinite;
             vertical-align: text-bottom;
             margin-left: 4px;
@@ -87,7 +115,7 @@
         }
 
         .separator {
-            color: #333;
+            color: var(--separator-color);
             margin-bottom: 1.5rem;
         }
         
@@ -114,7 +142,7 @@
         .item {
             margin-bottom: 1.5rem;
             padding-left: 1rem;
-            border-left: 2px solid #eee;
+            border-left: 2px solid var(--border-color);
         }
 
         .item .title {
@@ -127,25 +155,25 @@
             align-items: center;
             gap: 0.5rem;
             margin-top: 0.5rem;
-            color: #555;
+            color: var(--secondary-text-color);
             font-size: 0.9rem;
         }
 
         .repo-link svg {
-            fill: #555;
+            fill: var(--secondary-text-color);
             transition: fill 0.3s ease;
         }
 
         .repo-link:hover,
         .repo-link:hover svg {
             text-decoration: none;
-            color: #007bff;
-            fill: #007bff;
+            color: var(--primary-color);
+            fill: var(--primary-color);
         }
         
         .many-more {
             font-style: italic;
-            color: #888;
+            color: var(--footer-text-color);
             margin-top: 1.5rem;
         }
         
@@ -158,11 +186,65 @@
             margin-bottom: 0.5rem;
         }
 
+        #copy-feedback {
+            display: none; 
+            margin-left: 10px; 
+            color: var(--primary-color); 
+            font-style: italic;
+        }
+
         footer {
             margin-top: 4rem;
             text-align: center;
-            color: #888;
+            color: var(--footer-text-color);
         }
+
+        .theme-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 28px;
+            margin-left: 1rem;
+        }
+
+        .theme-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 28px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--primary-color);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(22px);
+        }
+
 
         @media (max-width: 600px) {
             body {
@@ -172,6 +254,11 @@
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 1rem;
+            }
+            .prompt nav {
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
             }
             .prompt nav a {
                 margin-left: 0;
@@ -198,6 +285,10 @@
                 <a href="#tech-stack">./stack</a>
                 <a href="#projects">./projects</a>
                 <a href="#contact">./contact</a>
+                <label class="theme-switch" title="Toggle theme">
+                    <input type="checkbox" id="theme-toggle-input">
+                    <span class="slider"></span>
+                </label>
             </nav>
         </header>
 
@@ -326,6 +417,26 @@
                 });
             });
         }
+
+        const themeToggleInput = document.getElementById('theme-toggle-input');
+        const body = document.body;
+
+        const setTheme = (theme) => {
+            body.setAttribute('data-theme', theme);
+            themeToggleInput.checked = theme === 'dark';
+            localStorage.setItem('theme', theme);
+        };
+
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+
+        setTheme(initialTheme);
+
+        themeToggleInput.addEventListener('change', () => {
+            const newTheme = themeToggleInput.checked ? 'dark' : 'light';
+            setTheme(newTheme);
+        });
     </script>
 </body>
 </html> 
