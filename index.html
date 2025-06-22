@@ -18,16 +18,40 @@
             --link-hover-color: #0056b3;
         }
 
-        body[data-theme="dark"] {
-            --bg-color: #121212;
-            --text-color: #e0e0e0;
-            --primary-color: #38b6ff;
-            --secondary-text-color: #bbbbbb;
-            --separator-color: #e0e0e0;
-            --border-color: #333;
-            --footer-text-color: #aaaaaa;
-            --cursor-bg-color: #e0e0e0;
-            --link-hover-color: #6acbff;
+        body[data-scheme="soft-dark"] {
+            --bg-color: #181c20;
+            --text-color: #e0e3e7;
+            --primary-color: #6ac1ff;
+            --secondary-text-color: #b0b8c1;
+            --separator-color: #e0e3e7;
+            --border-color: #23272b;
+            --footer-text-color: #b0b8c1;
+            --cursor-bg-color: #e0e3e7;
+            --link-hover-color: #8fd6ff;
+        }
+
+        body[data-scheme="sepia"] {
+            --bg-color: #f4ecd8;
+            --text-color: #5b4636;
+            --primary-color: #b5854a;
+            --secondary-text-color: #7c6f57;
+            --separator-color: #b5854a;
+            --border-color: #e2d3b3;
+            --footer-text-color: #a89c8e;
+            --cursor-bg-color: #b5854a;
+            --link-hover-color: #a67c52;
+        }
+
+        body[data-scheme="dim"] {
+            --bg-color: #23272f;
+            --text-color: #d3dae6;
+            --primary-color: #8ab4f8;
+            --secondary-text-color: #a0aec0;
+            --separator-color: #d3dae6;
+            --border-color: #2c313a;
+            --footer-text-color: #a0aec0;
+            --cursor-bg-color: #d3dae6;
+            --link-hover-color: #b6d0fa;
         }
 
         body {
@@ -285,10 +309,12 @@
                 <a href="#tech-stack">./stack</a>
                 <a href="#projects">./projects</a>
                 <a href="#contact">./contact</a>
-                <label class="theme-switch" title="Toggle theme">
-                    <input type="checkbox" id="theme-toggle-input">
-                    <span class="slider"></span>
-                </label>
+                <select id="color-scheme-select" title="Choose color scheme" style="margin-left:1rem; padding: 0.3rem 0.7rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-color);">
+                    <option value="default">Default</option>
+                    <option value="soft-dark">Soft Dark</option>
+                    <option value="sepia">Sepia</option>
+                    <option value="dim">Dim</option>
+                </select>
             </nav>
         </header>
 
@@ -418,24 +444,24 @@
             });
         }
 
-        const themeToggleInput = document.getElementById('theme-toggle-input');
+        const colorSchemeSelect = document.getElementById('color-scheme-select');
         const body = document.body;
 
-        const setTheme = (theme) => {
-            body.setAttribute('data-theme', theme);
-            themeToggleInput.checked = theme === 'dark';
-            localStorage.setItem('theme', theme);
+        const setColorScheme = (scheme) => {
+            if (scheme === 'default') {
+                body.removeAttribute('data-scheme');
+            } else {
+                body.setAttribute('data-scheme', scheme);
+            }
+            localStorage.setItem('color-scheme', scheme);
         };
 
-        const savedTheme = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+        const savedScheme = localStorage.getItem('color-scheme') || 'default';
+        setColorScheme(savedScheme);
+        colorSchemeSelect.value = savedScheme;
 
-        setTheme(initialTheme);
-
-        themeToggleInput.addEventListener('change', () => {
-            const newTheme = themeToggleInput.checked ? 'dark' : 'light';
-            setTheme(newTheme);
+        colorSchemeSelect.addEventListener('change', () => {
+            setColorScheme(colorSchemeSelect.value);
         });
     </script>
 </body>
